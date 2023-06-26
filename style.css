@@ -1,0 +1,60 @@
+body {
+    background-image: url("https://cdn.britannica.com/93/234293-050-08CDFA33/Chicago-style-pizza.jpg");
+    background-color: rgb(63, 110, 240);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.pizza {
+    border: 1px solid chocolate;
+    padding: 1em;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 2em;
+    width: 20em;
+    display: inline-block;
+    /* min-height: 30em; */
+    
+}
+
+.pizza img{
+    width: 20em;
+}
+.medium_pizza {
+    background-color: chocolate;
+flex: 1
+}
+
+.large_pizza {
+    background-color: blue;
+    flex:2
+}
+
+.small_pizza {
+    background-color: rgb(97, 5, 100);
+    flex:1
+}
+
+.contact_us {
+    background-color: crimson;
+    width: 90%;
+    height: 75px
+}
+.special{
+    background-color: black;
+    color: aliceblue;
+    margin: 0em;
+}
+@media (min-width: 760px) {
+
+    body {
+        background-color: rgb(124, 99, 156);
+        
+    }
+
+@media (min-width: 960px) {
+
+    body {
+        background-color: rgb(239, 245, 245);
+        
+    }
+    
+}

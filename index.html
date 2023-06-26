@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Pizza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Perfect Pizza</h1>
+
+    <div class="pizza small_pizza">
+        <h2>Small Pizza</h2>
+        <img src="pizza1.jfif" width="100">
+        <h3>R49.00</h3>
+        <form>
+            <input type="number" name="small_pizza_quantity" min="1" max="10" value="1">
+            <button type="button" onclick="addToCart('Small Pizza', 49.00, 'small_pizza_quantity')">Add to Cart</button>
+        </form>
+        <div>
+            The small size pizza is enjoyable for one person
+        </div>
+    </div>
+
+    <div class="pizza medium_pizza">
+        <h2>Medium Pizza</h2>
+        <img src="pizza2.jfif" width="125">
+        <h3>R89.00</h3>
+        <form>
+            <input type="number" name="medium_pizza_quantity" min="1" max="10" value="1">
+            <button type="button" onclick="addToCart('Medium Pizza', 89.00, 'medium_pizza_quantity')">Add to Cart</button>
+        </form>
+        <div>
+            The medium size pizza is enough for two people
+        </div>
+    </div>
+
+    <div class="pizza large_pizza">
+        <h2>Large Pizza</h2>
+        <img src="pizza3.jfif" width="150">
+        <h3>R129.00</h3>
+        <form>
+            <input type="number" name="large_pizza_quantity" min="1" max="10" value="1">
+            <button type="button" onclick="addToCart('Large Pizza', 129.00, 'large_pizza_quantity')">Add to Cart</button>
+        </form>
+        <div>
+            The family-size pizza is enough for a family
+        </div>
+    </div>
+
+    <div class="pizza">
+        <h2>Shopping Cart</h2>
+        <div id="cart_items"></div>
+        <h3>Total: <span id="cart_total">0.00</span></h3>
+        <button type="button" onclick="checkout()">Checkout</button>
+    </div>
+
+    <div class="pizza contact_us">
+        <h2>Contact details</h2>
+        Contact us at: 0788457891 info@perfectpizza.co.za 
+    </div>
+
+    <script>
+        var cart = []; // Array to store cart items
+
+        function addToCart(pizzaName, price, quantityFieldName) {
+            var quantity = parseInt(document.getElementsByName(quantityFieldName)[0].value);
+            var itemTotal = price * quantity;
+            var item = { name: pizzaName, price: price, quantity: quantity, total: itemTotal };
+            cart.push(item);
+            updateCart();
+            resetQuantity(quantityFieldName);
+        }
+
+        function updateCart() {
+            var cartItemsDiv = document.getElementById("cart_items");
+            var cartTotalSpan = document.getElementById("cart_total");
+
+            cartItemsDiv.innerHTML = "";
+            var total = 0;
+
+            for (var i = 0; i < cart.length; i++) {
+                var item = cart[i];
+                var itemDiv = document.createElement("div");
+                itemDiv.innerHTML = item.quantity + " x " + item.name + " - R" + item.total.toFixed(2);
+                cartItemsDiv.appendChild(itemDiv);
+                total += item.total;
+            }
+
+            cartTotalSpan.innerText = total.toFixed(2);
+        }
+
+        function resetQuantity(quantityFieldName) {
+            document.getElementsByName(quantityFieldName)[0].value = 1;
+        }
+
+        function checkout() {
+            // Perform the checkout logic here
+            // You can redirect the user to a payment gateway or process the payment using backend APIs
+            alert("Checkout process initiated. Total amount: R" + document.getElementById("cart_total").innerText);
+        }
+    </script>
+
+</body>
+
+</html>
